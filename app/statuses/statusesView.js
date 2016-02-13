@@ -3,6 +3,7 @@
 var StatusesWebApi = require('../app/build/statusesWebApi');
 var StatusesLogin = require('../app/build/statusesLogin');
 var ErrorCB = require('../app/build/errorCB');
+var toastr = require('toastr');
 
 function publishButtonClick() {
     var comment = $(".publish-statuses-comment").val();
@@ -11,6 +12,17 @@ function publishButtonClick() {
         StatusesWebApi.publishStatuses(comment, isPrivate, publishStatusesCallbackSuccess, ErrorCB.showError);
     } else {
         alert("闪存内容不可为空");
+    }
+}
+
+function deleteStatuses(statusesId) {
+    if (window.confirm("真的要删除吗?")) {
+        StatusesWebApi.deleteStatuses(statusesId, function callbackSuccess(body) {
+            toastr.success("删除成功");
+            $('#statuses-result-list-item-lunagao-' + statusesId).remove();
+        }, ErrorCB.showError);
+    } else {
+        // 不处理取消
     }
 }
 

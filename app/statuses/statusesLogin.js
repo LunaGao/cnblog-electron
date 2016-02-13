@@ -1,8 +1,8 @@
 'use strict';
 
 var StatusesWebApi = require('./statusesWebApi');
-var toastr = require('toastr');
 var ErrorCB = require('./errorCB');
+var user = require('./user');
 
 var _pageIndexForStatusesAll = 1;
 
@@ -10,14 +10,14 @@ exports.showStatuses = function showStatuses() {
     _pageIndexForStatusesAll = 1;
     showPublishStatusesView();
     $('.statuses-result-list-login-lunagao').html('<img class="loading" src="./images/icons/svg/pencils.svg"/>');
-    StatusesWebApi.getStatusesByType('all', _pageIndexForStatusesAll, 30, '', statusesLoginSuccessCallBack, ErrorCB.showError);
+    StatusesWebApi.getStatusesByType('all', 1, 30, '', statusesLoginSuccessCallBack, ErrorCB.showError);
 }
 
 exports.showStatusesByType = function showStatusesByType(type) {
     _pageIndexForStatusesAll = 1;
     $('.statuses-result-list-login-lunagao').empty();
     $('.statuses-result-list-login-lunagao').html('<img class="loading" src="./images/icons/svg/pencils.svg"/>');
-    StatusesWebApi.getStatusesByType(type, _pageIndexForStatusesAll, 30, '', statusesLoginSuccessCallBack, ErrorCB.showError);
+    StatusesWebApi.getStatusesByType(type, 1, 30, '', statusesLoginSuccessCallBack, ErrorCB.showError);
 }
 
 function showPublishStatusesView() {
@@ -32,7 +32,7 @@ function showPublishStatusesView() {
         '<a class="btn btn-block btn-lg btn-success publish-statuses-publish-lunagao" onclick="publishButtonClick()">发布</a>' + 
         '</div>' + 
         '</div>' + 
-        '<div>' +
+        '<div style="height:100%;">' +
         '<div class="statuses-type-lunagao">' +
         '<a id="changeStatusesType-lunagao-all" href="#" class="selected" onclick="changeStatusesType(\'all\')">全站</a>' + 
         '<a id="changeStatusesType-lunagao-following" href="#" onclick="changeStatusesType(\'following\')">关注</a>' + 
@@ -42,15 +42,13 @@ function showPublishStatusesView() {
         '<a id="changeStatusesType-lunagao-mention" href="#" onclick="changeStatusesType(\'mention\')">提到我</a>' + 
         '<a id="changeStatusesType-lunagao-comment" href="#" onclick="changeStatusesType(\'comment\')">回复我</a>' + 
         '</div>' + 
-        '<div class=""><div class="statuses-result-list-login-lunagao statuses-result-list-lunagao"></div></div>' + 
+        '<div class="statuses-result-list-login-lunagao statuses-result-list-lunagao"></div>' + 
         '</div>'
         );
 }
 
 function statusesLoginSuccessCallBack(body) {
-    if (_pageIndexForStatusesAll == 1) {
-        $('.statuses-result-list-login-lunagao').empty();
-    }
+    $('.loading').remove();
     var json = JSON.parse(body);
     if (json.length == 0) {
         $('.statuses-result-list-lunagao').append('<div class="nodata-lunagao"><h1>没有 :(</h1></div>');
@@ -61,6 +59,9 @@ function statusesLoginSuccessCallBack(body) {
         htmlstr += '<div id="statuses-result-list-item-lunagao-' + json[variable].Id + '" class="statuses-result-list-item-lunagao">'
         htmlstr += '<div class="statuses-result-list-item-UserIconUrl-lunagao"><img src=' + json[variable].UserIconUrl + ' class="img-rounded" /></div>';
         htmlstr += '<div class="statuses-result-list-item-username-lunagao">' + json[variable].UserDisplayName + '</div>';
+        if (json[variable].UserGuid == user.getUserId()) {
+            htmlstr += '<div class="delete-lunagao" onclick="deleteStatuses(' + json[variable].Id + ')"><span class="fui-cross"></span></div>';
+        }
         htmlstr += '<div class="statuses-result-list-item-date-lunagao"><small>' + formatData(json[variable].DateAdded) + '</small></div>';
         if (json[variable].IsLucky) {
             htmlstr += '<div class="statuses-result-list-item-lucky-lunagao"><span class="fui-heart"></span></div>';
@@ -84,9 +85,9 @@ function statusesLoginSuccessCallBack(body) {
 			var contentH = $('.statuses-result-list-lunagao')[0].scrollHeight;//内容高度
  			var scrollTop = $('.statuses-result-list-lunagao').scrollTop();//滚动高度
             // console.log(scrollTop + ';' + contentH + ',' + viewH);
-			if(scrollTop == (contentH -viewH - 20)){ //减去20是为了减去顶部的那个登录按钮做的。
+			if(scrollTop == (contentH -viewH - 20)){ //减去20是为了减去顶部的padding。
 				_pageIndexForStatusesAll ++;
-				StatusesWebApi.getStatusesByType('all', _pageIndexForStatusesAll, 30, '', statusesNotLoginSuccessCallBack, Error.showError);
+				StatusesWebApi.getStatusesByType('all', _pageIndexForStatusesAll, 30, '', statusesLoginSuccessCallBack, Error.showError);
 			}
 		});
     }

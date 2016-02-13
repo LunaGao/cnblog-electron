@@ -1,7 +1,6 @@
 'use strict';
 
 var StatusesWebApi = require('./statusesWebApi');
-var toastr = require('toastr');
 var ErrorCB = require('./errorCB');
 
 var _pageIndexForStatuses = 1;
@@ -26,7 +25,6 @@ function statusesNotLoginSuccessCallBack(body) {
         $('.statuses-result-list-lunagao').empty();
     }
     var json = JSON.parse(body);
-    // console.log(body);
     var htmlstr = '';
     for (var variable in json) {
         htmlstr += '<div id="statuses-result-list-item-lunagao-' + json[variable].Id + '" class="statuses-result-list-item-lunagao">'
@@ -41,11 +39,6 @@ function statusesNotLoginSuccessCallBack(body) {
             getStatusesNotLoginComments(json[variable].Id);
             htmlstr += '<div class="statuses-result-list-item-comments-lunagao"><small>回复正在拼命加载中···</small></div>';
         }
-        // htmlstr += '<div>' + json[variable].IsPrivate + '</div>';
-        // htmlstr += '<div>' + json[variable].Id + '</div>';
-        // htmlstr += '<div>' + json[variable].UserAlias + '</div>';
-        // htmlstr += '<div>' + json[variable].UserId + '</div>';
-        // htmlstr += '<div>' + json[variable].UserGuid + '</div>';
         htmlstr += '</div>';
     }
     $('.statuses-result-list-lunagao').append(htmlstr);

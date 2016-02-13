@@ -88,3 +88,23 @@ exports.publishStatuses = function publishStatuses(comment, isPrivate, callbackS
     callbackError(errordata);
   });
 }
+
+exports.deleteStatuses = function deleteStatuses(statusId, callbackSuccess, callbackError) {
+  token.getToken(false, function(access_token) {
+    var options = {
+      url: 'http://api.cnblogs.com/api/statuses/' + statusId,
+      headers: {
+        'Authorization': 'Bearer ' + access_token
+      }
+    };
+    request.del(options, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        callbackSuccess(body);
+      } else {
+        callbackError(error);
+      }
+    });
+  }, function(errordata) {
+    callbackError(errordata);
+  });
+}

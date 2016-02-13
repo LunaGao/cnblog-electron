@@ -26,6 +26,13 @@
 .statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-username-lunagao {
     padding-left: 10px;
 }
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .delete-lunagao {
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin-top: -30px;
+    color: #E74C3C;
+}
 .statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-date-lunagao{
     color: #7F8C8D;
     margin-top:-5px;
@@ -122,4 +129,5 @@
 }
 .statuses-result-list-login-lunagao {
     padding-left: 100px;
+    height: 100%;
 }

@@ -34,6 +34,10 @@ exports.getPassword = function getPassword() {
     return localStorage.getItem('password');
 }
 
+exports.getUserId = function getUserId() {
+    return localStorage.getItem('UserId');
+}
+
 exports.setLogin = function setLogin() {
     var username = $('#login-name').val();
     var password = $('#login-pass').val();
