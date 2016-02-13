@@ -1,0 +1,31 @@
+.kbArticles {
+  line-height: 1;
+}
+.kbArticlesItem.activity {
+  color:#ECF0F1;
+	background-color: #2980B9;
+}
+.kbArticlesItem.activity i {
+  color:#ECF0F1;
+}
+.kbArticlesItem {
+  padding: 10px 10px 10px 10px;
+  border-bottom: 1px #BDC3C7 solid;
+  position: relative;
+}
+.kbArticlesItem strong{
+  font-size: 16px;
+}
+.kbArticlesItem span {
+  font-size: 12px;
+}
+.kbArticlesItem i {
+  font-size: 12px;
+  margin-left: 4px;
+  color: #E74C3C;
+}
+.kbArticlesItem .moreInfo {
+  position:absolute;
+  right: 8px;
+  bottom: 10px;
+}

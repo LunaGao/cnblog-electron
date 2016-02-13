@@ -1,0 +1,81 @@
+.blogList {
+  line-height: 1;
+}
+.blogItem.activity {
+  color:#ECF0F1;
+	background-color: #2980B9;
+}
+.blogItem.activity i {
+  color:#ECF0F1;
+}
+.blogItem {
+  /*margin: 6px 6px 6px 6px;*/
+  padding: 10px 10px 10px 10px;
+  border-bottom: 1px #BDC3C7 solid;
+  position: relative;
+}
+.blogItem strong{
+  font-size: 16px;
+}
+.blogItem span {
+  font-size: 12px;
+}
+.blogItem i {
+  font-size: 12px;
+  margin-left: 4px;
+  color: #E74C3C;
+}
+.blogItem img {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+.blogItem .moreInfo {
+  position:absolute;
+  right: 8px;
+  bottom: 10px;
+}
+.blogComments {
+  background-color: #ECF0F1;
+  margin: 0 -40px -60px -20px;
+}
+.blogComments .Author {
+  /*display: block;
+  float: left;*/
+  width: 100%;
+}
+.blogComments .Author h6 {
+  margin-top: 10px;
+  padding: 6px 0 0 10px;
+}
+.blogComment {
+  width: 100%;
+  border-top: 1px #7F8C8D solid;
+  border-left: 1px #7F8C8D solid;
+  padding-bottom: 10px;
+}
+.blogCommentBody {
+  margin-left: 50px;
+  border-color: #E74C3C;
+  margin-bottom: 0;
+  /*display: block;
+  float: left;*/
+}
+.blogComment p {
+  font-size: 16px;
+}
+.blogComment small {
+  color: #E74C3C;
+  font-size: 10px;
+}
+.blogComments .comment-need-login {
+    padding: 20px 30px 10px 30px;
+}
+.blogComments textarea {
+    width: 80%;
+    height: 200px;
+    resize: none;
+}
+.commentLeaveMessage {
+    margin-right: 30px;
+}

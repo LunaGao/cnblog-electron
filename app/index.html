@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="cn">
+  <head>
+    <meta charset="utf-8">
+    <title>博客园</title>
+    <link href="../node_modules/flat-ui/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="./css/flat-ui.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="./css/news.css" rel="stylesheet">
+    <link href="./css/blog.css" rel="stylesheet">
+    <link href="./css/kbArticle.css" rel="stylesheet">
+    <link href="./css/user.css" rel="stylesheet">
+    <link href="./css/search.css" rel="stylesheet">
+    <link href="./css/statuses.css" rel="stylesheet">
+    <link href="../node_modules/toastr/build/toastr.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="slide palette-turquoise">
+      <ul>
+        <li id="blogs">
+          <i class="menu fui-list"></i>
+        </li>
+        <li id="news">
+          <i class="menu fui-time"></i>
+        </li>
+        <li id="kbArticles">
+          <i class="menu fui-check"></i>
+        </li>
+        <li id="user">
+          <i class="fui-user"></i>
+        </li>
+        <li id="statuses">
+          <i class="fui-chat"></i>
+        </li>
+        <li id="bookmarks">
+          <i class="fui-heart"></i>
+        </li>
+        <li id="zzkDocument">
+          <i class="fui-search"></i>
+        </li>
+      </ul>
+      <div class="slideLabel"></div>
+    </div>
+    <div class="content">
+      <div id="list-cnblogs-lunagao">
+      </div>
+      <div id="container">
+      </div>
+    </div>
+
+    <!-- Load JS here for greater good =============================-->
+    <script src="../node_modules/react/dist/react.js"></script>
+    <script src="../node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="../node_modules/flat-ui/js/jquery-1.8.3.min.js"></script>
+    <script src="../node_modules/flat-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../node_modules/flat-ui/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="../node_modules/flat-ui/js/bootstrap.min.js"></script>
+    <script src="../node_modules/flat-ui/js/bootstrap-select.js"></script>
+    <script src="../node_modules/flat-ui/js/bootstrap-switch.js"></script>
+    <script src="../node_modules/flat-ui/js/flatui-checkbox.js"></script>
+    <script src="../node_modules/flat-ui/js/flatui-radio.js"></script>
+    <script src="../node_modules/flat-ui/js/jquery.tagsinput.js"></script>
+    <script src="../node_modules/flat-ui/js/jquery.placeholder.js"></script>
+    <script src="../node_modules/flat-ui/js/jquery.stacktable.js"></script>
+    <script src="../node_modules/flat-ui/js/application.js"></script>
+
+    <script src="./build/loginView.js"></script>
+    <script src="./build/userComment.js"></script>
+    <script src="./build/searchView.js"></script>
+    <script src="./build/statusesView.js"></script>
+
+    <script src="./build/slide.js"></script>
+    
+    <script src='./js/jsencrypt.js'></script>
+    <script>
+      $(document).ready(function() {
+        // $('#blogs').click();
+        $('#statuses').click();  
+      });
+    </script>
+  </body>
+</html>

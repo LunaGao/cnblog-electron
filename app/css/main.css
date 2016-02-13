@@ -1,0 +1,84 @@
+html {
+	min-height: 100%;
+	_height:100%;
+  overflow:hidden;
+	cursor:default;
+}
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	_height:100%;
+}
+.slide {
+  padding: 0;
+  position:absolute;
+	margin: auto;
+	min-height: 100%;
+	_height:100%;
+  width: 60px;
+  border-right: 2px solid #16A085;
+}
+.slide ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.slide ul li {
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  width: 100%;
+}
+.slide ul li i{
+  font-size: 26px;
+}
+.slide .slideLabel {
+    color: #34495E;
+    text-align: center;
+    line-height: 50px;
+	font-size: 40px;
+    bottom:10px;
+    position:absolute;
+}
+.slide ul li.activity {
+	color: #1ABC9C;
+	background-color: #34495E;
+}
+.content {
+	position:absolute;
+	height: 100%;
+	margin: 0 0 0 60px;
+  padding: 0;
+  width: 100%;
+	overflow-x:hidden;
+}
+@-webkit-keyframes rotate{
+	from{-webkit-transform:rotate(360deg)}
+	to{-webkit-transform:rotate(0deg)}
+}
+.loading {
+	animation: 2s linear 0s normal none infinite rotate;
+	display: block;
+	margin-top: 100px;
+	margin: 0 auto;
+	background-position:center center;
+}
+#list-cnblogs-lunagao {
+	position:absolute;
+	height: 100%;
+  padding: 0;
+	overflow-x:hidden;
+	width: 300px;
+	float: right;
+	background-color: #ECF0F1;
+}
+#container {
+	position:absolute;
+	left: 300px;
+	height: 100%;
+	margin-right: 300px;
+	width: 100%;
+	overflow:auto;
+	padding: 20px 380px 20px 20px;
+}

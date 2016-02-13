@@ -1,0 +1,125 @@
+.statuses-login-button-lunagao {
+    float: right;
+    padding-top: 10px;
+    padding-right: 60px;
+    z-index: 10;
+}
+.statuses-result-list-lunagao {
+    padding: 20px 50px 0 20px;
+    width: 100%;
+    height: 100%;
+    overflow:auto;
+    overflow-x: hidden;
+}
+.statuses-result-list-lunagao .nodata-lunagao {
+    text-align: center;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #BDC3C7;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-UserIconUrl-lunagao {
+    float: left;
+    padding: 0 10px 5px 0;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-username-lunagao {
+    padding-left: 10px;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-date-lunagao{
+    color: #7F8C8D;
+    margin-top:-5px;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-lucky-lunagao {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-right: 5px;
+    margin-top: -2px;
+    color: #D35400;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao {
+    padding-left: 20px;
+    color: #7F8C8D;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao {
+    padding-top: 10px;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao .usericon-lunagao {
+    width: 24px;
+    height: 24px;
+    margin: 4px;
+    float: left;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao .userdisplayname-lunagao {
+    padding-left: 4px;
+    padding-right: 10px;
+    color: #34495E;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao .statuses-comment-content-lunagao {
+    padding-left: 40px; 
+    color: #34495E;
+}
+.statuses-publish-lunagao {
+    background-color: #ECF0F1;
+    padding-right: 100px;
+    padding-bottom: 40px;
+    border-bottom: 2px solid #BDC3C7;
+}
+.statuses-publish-lunagao .publish-user-avatar-lunagao {
+    float: left;
+    margin: 30px 0 0 30px;
+    width: 60px;
+}
+.statuses-publish-lunagao .publish-user-name-lunagao {
+    margin: 0;
+    padding: 30px 0 10px 110px;
+}
+.statuses-publish-lunagao .publish-statuses-comment-div {
+    width: 600px;
+    padding-right: 90px;
+}
+.statuses-publish-lunagao .publish-statuses-comment-div .publish-statuses-comment {
+    width: 100%;
+    margin: -20px 0 0 110px;
+    resize: none;
+}
+.statuses-publish-lunagao .publish-statuses-viewtype-lunagao {
+    margin: 10px 0 0 110px;
+    float: left;
+}
+.statuses-publish-lunagao .publish-statuses-viewtype-lunagao .first-icon{
+    background-color: #ECF0F1;
+}
+.statuses-publish-lunagao .publish-statuses-viewtype-lunagao .second-icon{
+    background-color: #ECF0F1;
+}
+.statuses-publish-lunagao .publish-statuses-addtag-lunagao {
+    float: left;
+    margin: 8px 0 0 20px;
+    font-size: 14px;
+}
+.statuses-publish-lunagao .publish-statuses-publish-lunagao {
+    float: left;
+    width: 120px;
+    margin: 12px -10px 0 20px;
+}
+.statuses-type-lunagao {
+    z-index: 10; 
+    position: fixed; 
+    width: 80px; 
+    top: 200px;
+}
+.statuses-type-lunagao a {
+    display: block;
+    padding: 10px 0 0 10px;
+    text-align: center;
+    font-size: 18px;
+}
+.statuses-type-lunagao .selected {
+    color: #2980B9;
+    font-size: 20px;
+}
+.statuses-result-list-login-lunagao {
+    padding-left: 100px;
+}

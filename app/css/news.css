@@ -1,0 +1,34 @@
+.newList {
+  line-height: 1;
+}
+.newItem.activity {
+  color:#ECF0F1;
+	background-color: #2980B9;
+}
+.newItem.activity i {
+  color:#ECF0F1;
+}
+.newItem {
+  padding: 10px 10px 10px 10px;
+  border-bottom: 1px #BDC3C7 solid;
+  position: relative;
+}
+.newItem strong{
+  font-size: 16px;
+}
+.newItem span {
+  font-size: 12px;
+}
+.newItem i {
+  font-size: 12px;
+  margin-left: 4px;
+  color: #E74C3C;
+}
+.newItem img {
+  height: 18px;
+}
+.newItem .moreInfo {
+  position:absolute;
+  right: 8px;
+  bottom: 10px;
+}

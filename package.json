@@ -1,0 +1,33 @@
+{
+  "name": "cnblogs",
+  "version": "0.1.0-Base",
+  "description": "cnblogs",
+  "main": "main.js",
+  "dependencies": {
+    "electron-debug": "^0.1.1",
+    "encoding": "^0.1.12",
+    "flat-ui": "^2.1.1",
+    "jquery": "^2.2.0",
+    "node-localstorage": "^1.1.2",
+    "node-rsa": "^0.2.30",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-router": "^2.0.0-rc4",
+    "request": "^2.67.0",
+    "toastr": "^2.1.2",
+    "ursa": "^0.9.1"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.3.13",
+    "electron-packager": "^5.2.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager ./ cnblogs --platform=darwin --arch=x64 --out ~/Desktop/cnblogs --version 0.36.3 --overwrite --icon=./app/img/app-icon.icns --asar=true"
+  },
+  "keywords": [
+    "Cnblogs"
+  ],
+  "author": "LunaGao",
+  "license": "MIT"
+}
