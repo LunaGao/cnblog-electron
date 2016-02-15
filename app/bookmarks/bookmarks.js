@@ -2,7 +2,7 @@
 
 var User = require('./user');
 var BookmarksNotLogin = require('./bookmarksNotLogin');
-var BookmarksLogin = require('./statusesLogin');
+var BookmarksLogin = require('./bookmarksLogin');
 
 exports.showBookmarks = function showBookmarks() {
     $('.content').empty();
