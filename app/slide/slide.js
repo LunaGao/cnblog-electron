@@ -8,6 +8,7 @@ var KbArticles = require('../app/build/KbArticles');
 var User = require('../app/build/user');
 var Search = require('../app/build/search')
 var Statuses = require('../app/build/statuses');
+var Bookmarks = require('../app/build/bookmarks');
 
 function setActivity(slideItem) {
   $('.slide ul li').removeClass('activity');
@@ -73,7 +74,7 @@ $('.slide').on('click', '#bookmarks', function () {
   if(!$(this).hasClass('.activity')) {
     $('.slideLabel').text('收藏');
     setActivity(this);
-    User.showUserInfo();
+    Bookmarks.showBookmarks();
   }
 });
 

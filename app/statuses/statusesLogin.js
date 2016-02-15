@@ -5,6 +5,7 @@ var ErrorCB = require('./errorCB');
 var user = require('./user');
 
 var _pageIndexForStatusesAll = 1;
+var _typeForStatuses = 'all';
 
 exports.showStatuses = function showStatuses() {
     _pageIndexForStatusesAll = 1;
@@ -15,9 +16,10 @@ exports.showStatuses = function showStatuses() {
 
 exports.showStatusesByType = function showStatusesByType(type) {
     _pageIndexForStatusesAll = 1;
+    _typeForStatuses = type;
     $('.statuses-result-list-login-lunagao').empty();
     $('.statuses-result-list-login-lunagao').html('<img class="loading" src="./images/icons/svg/pencils.svg"/>');
-    StatusesWebApi.getStatusesByType(type, 1, 30, '', statusesLoginSuccessCallBack, ErrorCB.showError);
+    StatusesWebApi.getStatusesByType(_typeForStatuses, 1, 30, '', statusesLoginSuccessCallBack, ErrorCB.showError);
 }
 
 function showPublishStatusesView() {
@@ -51,27 +53,46 @@ function statusesLoginSuccessCallBack(body) {
     $('.loading').remove();
     var json = JSON.parse(body);
     if (json.length == 0) {
+        $('.statuses-result-list-lunagao').unbind();
         $('.statuses-result-list-lunagao').append('<div class="nodata-lunagao"><h1>没有 :(</h1></div>');
         return;
     }
     var htmlstr = '';
     for (var variable in json) {
-        htmlstr += '<div id="statuses-result-list-item-lunagao-' + json[variable].Id + '" class="statuses-result-list-item-lunagao">'
+        htmlstr += '<div id="statuses-result-list-item-lunagao-' + json[variable].Id + '" class="statuses-result-list-item-lunagao">';
         htmlstr += '<div class="statuses-result-list-item-UserIconUrl-lunagao"><img src=' + json[variable].UserIconUrl + ' class="img-rounded" /></div>';
         htmlstr += '<div class="statuses-result-list-item-username-lunagao">' + json[variable].UserDisplayName + '</div>';
         if (json[variable].UserGuid == user.getUserId()) {
             htmlstr += '<div class="delete-lunagao" onclick="deleteStatuses(' + json[variable].Id + ')"><span class="fui-cross"></span></div>';
+        }
+        if (json[variable].IsPrivate) {
+            htmlstr += '<div class="private-lunagao" onclick="privateStatusesShowTip()"><span class="fui-lock"></span></div>';
         }
         htmlstr += '<div class="statuses-result-list-item-date-lunagao"><small>' + formatData(json[variable].DateAdded) + '</small></div>';
         if (json[variable].IsLucky) {
             htmlstr += '<div class="statuses-result-list-item-lucky-lunagao"><span class="fui-heart"></span></div>';
         }
         htmlstr += '<div>' + json[variable].Content + '</div>';
+        var replayFuncStr = '';
+        if (json[variable].StatusId) {
+            replayFuncStr = 'replyStatuse(' + json[variable].StatusId + ',' + json[variable].UserId + ',' + json[variable].Id + ')';
+        } else {
+            replayFuncStr = 'replyStatuse(' + json[variable].Id + ',null,' + json[variable].Id + ')';
+        }
+        htmlstr += '<div class="reply-statuse-lunagao"><span class="fui-chat reply-statuse-lunagao" onclick="showReplyStatuseView(' + json[variable].Id + ')">回应</span>' +
+            '<div id="reply-statuse-lunagao-' + json[variable].Id + '" style="display:none;">' + 
+            '<input class="reply-comment-lunagao" onkeypress="if(event.keyCode==13) {' + replayFuncStr + ';return false;}" value="';
+        if (json[variable].StatusId) {
+            htmlstr += '@' + json[variable].UserDisplayName + '：';
+        }
+        htmlstr += '"/><span class="fui-check" onclick="' + replayFuncStr + '">提交</span></div>' + 
+            '</div>';
         if (json[variable].CommentCount != 0) {
             getStatusesLoginComments(json[variable].Id);
-            htmlstr += '<div class="statuses-result-list-item-comments-lunagao"><small>回复正在拼命加载中···</small></div>';
+            htmlstr += '<div id="statuses-comments-lunagao-' + json[variable].Id + '" class="statuses-result-list-item-comments-lunagao"><small>回复正在拼命加载中···</small></div>';
+        } else {
+            htmlstr += '<div id="statuses-comments-lunagao-' + json[variable].Id + '" class="statuses-result-list-item-comments-lunagao"></div>';
         }
-        // htmlstr += '<div>' + json[variable].IsPrivate + '</div>';
         // htmlstr += '<div>' + json[variable].Id + '</div>';
         // htmlstr += '<div>' + json[variable].UserAlias + '</div>';
         // htmlstr += '<div>' + json[variable].UserId + '</div>';
@@ -87,10 +108,17 @@ function statusesLoginSuccessCallBack(body) {
             // console.log(scrollTop + ';' + contentH + ',' + viewH);
 			if(scrollTop == (contentH -viewH - 20)){ //减去20是为了减去顶部的padding。
 				_pageIndexForStatusesAll ++;
-				StatusesWebApi.getStatusesByType('all', _pageIndexForStatusesAll, 30, '', statusesLoginSuccessCallBack, Error.showError);
+				StatusesWebApi.getStatusesByType(_typeForStatuses , _pageIndexForStatusesAll, 30, '', statusesLoginSuccessCallBack, Error.showError);
 			}
 		});
     }
+}
+
+exports.reloadStatusesComments = function reloadStatusesComments(statusId) {
+    var commentDiv = $('#statuses-comments-lunagao-' + statusId).empty();
+    commentDiv.empty();
+    commentDiv.html('<small>回复正在拼命加载中···</small>');
+    commentDiv.html(getStatusesLoginComments(statusId));
 }
 
 function getStatusesLoginComments(statusId) {
@@ -98,11 +126,19 @@ function getStatusesLoginComments(statusId) {
         var json = JSON.parse(body);
         var htmlstr = '';
         for (var variable in json) {
-            htmlstr += '<div class="statuses-result-list-item-comments-item-lunagao">';
+            htmlstr += '<div id="statuses-result-list-item-comments-item-lunagao-' + json[variable].StatusId + '-' + json[variable].Id + '" class="statuses-result-list-item-comments-item-lunagao">';
             htmlstr += '<img src=' + json[variable].UserIconUrl + ' class="img-rounded usericon-lunagao" />';
             htmlstr += '<small class="userdisplayname-lunagao">' + json[variable].UserDisplayName + '</small>';
             htmlstr += '<small>' + formatData(json[variable].DateAdded) + '</small>';
-            htmlstr += '<div class="statuses-comment-content-lunagao"><small>' + json[variable].Content + '</small></div>';
+            if (json[variable].UserGuid == user.getUserId()) {
+                htmlstr += '<div class="comments-delete-lunagao" onclick="deleteStatusesComment(' + json[variable].StatusId + ',' + json[variable].Id + ')"><span class="fui-cross"></span></div>';
+            }
+            htmlstr += '<div class="statuses-comment-content-lunagao"><small>' + json[variable].Content + '</small>';
+            if (json[variable].UserGuid != user.getUserId()) {
+                htmlstr += '<span class="fui-chat reply-statuse-lunagao" onclick="showReplyStatuseView(' + json[variable].Id + ',true)">回应</span>' +
+                    '<div id="reply-statuse-lunagao-' + json[variable].Id + '" style="display:none;"><input class="reply-comment-lunagao" value="@' + json[variable].UserDisplayName + '：" onkeypress="if(event.keyCode==13){replyStatuse(' + json[variable].StatusId + ',' + json[variable].UserId + ',' + json[variable].Id + ');return false;}"/><span class="fui-check" onclick="replyStatuse(' + json[variable].StatusId + ',' + json[variable].UserId + ',' + json[variable].Id + ')">提交</span></div>';
+            }
+            htmlstr += '</div>';
             // htmlstr += '<div>' + json[variable].Id + '</div>';
             // htmlstr += '<div>' + json[variable].StatusId + '</div>';
             // htmlstr += '<div>' + json[variable].UserAlias + '</div>';

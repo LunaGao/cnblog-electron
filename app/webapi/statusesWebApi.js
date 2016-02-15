@@ -108,3 +108,67 @@ exports.deleteStatuses = function deleteStatuses(statusId, callbackSuccess, call
     callbackError(errordata);
   });
 }
+
+exports.deleteStatusesComment = function deleteStatusesComment(statusId, commentId, callbackSuccess, callbackError) {
+  token.getToken(false, function(access_token) {
+    var options = {
+      url: 'http://api.cnblogs.com/api/statuses/' + statusId + '/comments/' + commentId,
+      headers: {
+        'Authorization': 'Bearer ' + access_token
+      }
+    };
+    request.del(options, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        callbackSuccess(body);
+      } else {
+        callbackError(error);
+      }
+    });
+  }, function(errordata) {
+    callbackError(errordata);
+  });
+}
+
+exports.replyStatuses = function replyStatuses(statusId, replyTo, parentCommentId, content, callbackSuccess, callbackError) {
+  token.getToken(false, function(access_token) {
+    var commentValue = '{"ReplyTo":' + replyTo + ', "ParentCommentId":' + parentCommentId + ',"Content":"' + content + '"}'
+    var options = {
+        hostname: 'api.cnblogs.com',
+        port: 80,
+        path: '/api/statuses/' + statusId + '/comments',
+        method : 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + access_token,
+            'Content-Type': 'text/json'
+        }
+    };
+    var req = http.request(options, function (res) {
+        if (res.statusCode == 200) {
+            callbackSuccess('回复成功');
+        } else {
+            var str = '';
+            res.setEncoding('utf8');
+            res.on('data', function (chunk) {
+                str += chunk;
+            });
+            res.on('end', function(){
+                console.log(str);
+                console.log(res.statusCode);
+                var message = JSON.parse(str).message;
+                if (message) {
+                    callbackError(message);
+                } else {
+                    callbackError("程序处理错误···")
+                } 
+            });
+        }
+    });
+    req.on('error', function (e) {
+        callbackError(e);
+    });
+    req.write(commentValue);
+    req.end();
+  }, function(errordata) {
+    callbackError(errordata);
+  });
+}

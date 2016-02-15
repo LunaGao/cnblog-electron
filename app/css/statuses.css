@@ -5,7 +5,7 @@
     z-index: 10;
 }
 .statuses-result-list-lunagao {
-    padding: 20px 50px 0 20px;
+    padding: 20px 70px 0 20px;
     width: 100%;
     height: 100%;
     overflow:auto;
@@ -25,13 +25,33 @@
 }
 .statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-username-lunagao {
     padding-left: 10px;
+    color: #7F8C8D;
 }
 .statuses-result-list-lunagao .statuses-result-list-item-lunagao .delete-lunagao {
     width: 30px;
     height: 30px;
     float: right;
     margin-top: -30px;
+    margin-right: 10px;
     color: #E74C3C;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .private-lunagao {
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin-top: -30px;
+    margin-right: 40px;
+    color: #E74C3C;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .reply-statuse-lunagao {
+    font-size: 12px;
+    color: #2980B9;
+    padding-left: 10px;
+    height: 26px;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .reply-statuse-lunagao .reply-comment-lunagao {
+    width: 380px;
+    margin: 0 10px 0 10px;
 }
 .statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-date-lunagao{
     color: #7F8C8D;
@@ -52,6 +72,12 @@
 .statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao {
     padding-top: 10px;
 }
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao .comments-delete-lunagao {
+    width: 30px;
+    height: 30px;
+    float: right;
+    color: #E74C3C;
+}
 .statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao .usericon-lunagao {
     width: 24px;
     height: 24px;
@@ -66,6 +92,14 @@
 .statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao .statuses-comment-content-lunagao {
     padding-left: 40px; 
     color: #34495E;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao .statuses-comment-content-lunagao div{
+    font-size: 12px;
+    color: #2980B9;
+}
+.statuses-result-list-lunagao .statuses-result-list-item-lunagao .statuses-result-list-item-comments-lunagao .statuses-result-list-item-comments-item-lunagao .statuses-comment-content-lunagao .reply-comment-lunagao{
+    width: 370px;
+    margin: 0 10px 0 10px;
 }
 .statuses-publish-lunagao {
     background-color: #ECF0F1;

@@ -66,11 +66,6 @@ function getStatusesNotLoginComments(statusId) {
             htmlstr += '<small class="userdisplayname-lunagao">' + json[variable].UserDisplayName + '</small>';
             htmlstr += '<small>' + formatData(json[variable].DateAdded) + '</small>';
             htmlstr += '<div class="statuses-comment-content-lunagao"><small>' + json[variable].Content + '</small></div>';
-            // htmlstr += '<div>' + json[variable].Id + '</div>';
-            // htmlstr += '<div>' + json[variable].StatusId + '</div>';
-            // htmlstr += '<div>' + json[variable].UserAlias + '</div>';
-            // htmlstr += '<div>' + json[variable].UserId + '</div>';
-            // htmlstr += '<div>' + json[variable].UserGuid + '</div>';
             htmlstr += '</div>'
         }
         $('#statuses-result-list-item-lunagao-' + statusId + ' .statuses-result-list-item-comments-lunagao').html(htmlstr);
