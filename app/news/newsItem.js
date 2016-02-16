@@ -1,6 +1,7 @@
 'use strict';
 
 var NewsBody = require('./newsBody');
+// var Bookmarks = require('./bookmarks');
 
 function setNewsActivity(e) {
   var t = e.target || e.srcElement;
@@ -20,6 +21,7 @@ var NewsItem = React.createClass({
           // console.log(theNews.Id);
           NewsBody.showNewsBody(theNews);
           setNewsActivity(event);
+        //   Bookmarks.showBookmarksButton(theNews.Url);
         };
         if (theNews.TopicIcon == 'http://pic.cnblogs.com/face/') {
           theNews.TopicIcon = './img/avatar.png';

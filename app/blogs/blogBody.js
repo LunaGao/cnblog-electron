@@ -3,6 +3,7 @@
 var blogWebApi = require('./blogsWebApi');
 var User = require('./user');
 var ErrorCB = require('./errorCB');
+var Bookmarks = require('./bookmarks');
 
 function formatData(value) {
   var returnValue = value.substr(0, 4) + '年';
@@ -32,7 +33,7 @@ function leaveComment(blog) {
     if (User.isHasLogin()) {
         commentHtml = '<div class="commentLeaveMessage blogComment"><div class="Author"><h6>' + localStorage.getItem('DisplayName') + '</h6></div>';
         commentHtml += '<textarea class="blogCommentBody leaveBlogCommentBody" />';
-        commentHtml += '<div class="comment-need-login"><a href="#" class="btn btn-block btn-lg btn-primary" onclick="userleavecomment(\'' + blog.BlogApp + '\',' + blog.Id + ');">回复</a></div>';
+        commentHtml += '<div class="comment-need-login"><a href="#" class="btn btn-block btn-lg btn-primary" onclick="userleavecommentBlog(\'' + blog.BlogApp + '\',' + blog.Id + ');">回复</a></div>';
         commentHtml += '</div>';
     } else {
         commentHtml = '<div class="blogComment"><div class="comment-need-login">';
@@ -47,6 +48,7 @@ exports.showBlogBody = function showBlogBody(blog){
   blogWebApi.getBlogBody(blog.Id, function callbackSuccess(value) {
     document.getElementById("container").innerHTML = value;
     showBlogComments(blog);
+    Bookmarks.showBookmarksButton(blog);
   }, function callbackError(errordata) {
       ErrorCB.showError(errordata);
       document.getElementById("container").innerHTML = '失败了···';

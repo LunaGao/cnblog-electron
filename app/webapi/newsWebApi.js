@@ -96,3 +96,45 @@ exports.getNewComments = function getNewComments(newsId, pageIndexValue, pageSiz
         callbackError(errordata);
     });
 }
+
+exports.setNewsComment = function setNewsComment(newsId, parentId, commentValue, callbackSuccess, callbackError) {
+  token.getToken(false, function(access_token) {
+    var bodyStr = '{"ParentId":'+parentId+',"Content":"'+commentValue+'"}';
+    var options = {
+        hostname: 'api.cnblogs.com',
+        port: 80,
+        path: '/api/news/' + newsId + '/comments',
+        method : 'POST',
+        headers: {
+            'Authorization': 'Bearer ' + access_token,
+            'Content-Type': 'text/json'
+        }
+    };
+    var req = http.request(options, function (res) {
+        if (res.statusCode == 200 || res.statusCode == 201) {
+            callbackSuccess('回复成功');
+        } else {
+            var str = '';
+            res.setEncoding('utf8');
+            res.on('data', function (chunk) {
+                str += chunk;
+            });
+            res.on('end', function(){
+                var message = JSON.parse(str).message;
+                if (message) {
+                    callbackError(message);
+                } else {
+                    callbackError("程序处理错误···")
+                } 
+            });
+        }
+    });
+    req.on('error', function (e) {
+        callBackError(e);
+    });
+    req.write(bodyStr);
+    req.end();
+  }, function(errordata) {
+    callbackError(errordata);
+  });
+}

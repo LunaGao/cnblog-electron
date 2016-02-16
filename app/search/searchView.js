@@ -31,11 +31,11 @@ function search_button_click_lunagao() {
     }
 }
 
-function search_item_click(itemId, commentCount, blogapp) {
+function search_item_click(itemId, commentCount, blogapp, uri, title) {
     search_item_click_bar_change(true);
     switch (_category) {
         case '1':
-            var json = JSON.parse('{"Id":' + itemId + ',"BlogApp":"' + blogapp + '","CommentCount":' + commentCount + '}');
+            var json = JSON.parse('{"Id":' + itemId + ',"BlogApp":"' + blogapp + '","CommentCount":' + commentCount + ',"Url":"'+uri+'","Title":"'+title+'"}');
             BlogBody.showBlogBody(json);
             break;
         case '2':
@@ -105,7 +105,7 @@ function showSearchResultAgain(body) {
 function showSearchResultList(json) {
     var htmlstr = '<div id="result-list-lunagao">';
     for (var variable in json) {
-        htmlstr += '<div class="result-single-lunagao" onclick="search_item_click(' + json[variable].Id + ',' + json[variable].CommentTimes + ',\'' + json[variable].UserAlias + '\')">';
+        htmlstr += '<div class="result-single-lunagao" onclick="search_item_click(' + json[variable].Id + ',' + json[variable].CommentTimes + ',\'' + json[variable].UserAlias + '\',\'' + json[variable].Uri + '\',\'' + json[variable].Title + '\')">';
         htmlstr += '<div class="result-title"><h6>' + json[variable].Title + '</h6></div>';
         htmlstr += '<div class="result-content">.......' + json[variable].Content + '.......</div>';
         if (json[variable].UserName != null) {

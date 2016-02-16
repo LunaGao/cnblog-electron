@@ -77,13 +77,14 @@ exports.setLoginByView = function setLoginByView() {
             $(".showAlertLoginView-lunagao").remove();
             $(".showAlertLoginView-lunagao-bg").remove();
             // todo 登录了
-            $(".comment-need-login").parent().remove();
-            var commentHtml;
-            commentHtml = '<div class="commentLeaveMessage blogComment"><div class="Author"><h6>' + localStorage.getItem('DisplayName') + '</h6></div>';
-            commentHtml += '<textarea class="blogCommentBody" />';
-            commentHtml += '<div class="comment-need-login"><a href="#" class="btn btn-block btn-lg btn-primary">回复</a></div>';
-            commentHtml += '</div>';
-            $(".blogComments").append(commentHtml);
+            $('#user').click();
+            // $(".comment-need-login").parent().remove();
+            // var commentHtml;
+            // commentHtml = '<div class="commentLeaveMessage blogComment"><div class="Author"><h6>' + localStorage.getItem('DisplayName') + '</h6></div>';
+            // commentHtml += '<textarea class="blogCommentBody" />';
+            // commentHtml += '<div class="comment-need-login"><a href="#" class="btn btn-block btn-lg btn-primary">回复</a></div>';
+            // commentHtml += '</div>';
+            // $(".blogComments").append(commentHtml);
         }, ErrorCB.showError
     );
 }

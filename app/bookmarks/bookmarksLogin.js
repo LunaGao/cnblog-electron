@@ -15,6 +15,16 @@ exports.showBookmarks = function showBookmarks() {
     BookmarksWebApi.getBookmarks(1, 20, bookmarksSuccessCallBack, ErrorCB.showError);
 }
 
+exports.hasBookmark = function hasBookmark(entity) {
+    BookmarksWebApi.hasBookmark(entity.Url, function success(isHas) {
+        if (!isHas) {
+            $('#container').append('<script>var entity_lunagao = \''+JSON.stringify(entity)+'\'</script><a class="bookmark-button-float-lunagao btn btn-info" onclick="addbookmark(entity_lunagao)">收藏</a>');
+        } else {
+            $('#container').append('<script>var entity_lunagao = \''+JSON.stringify(entity)+'\'</script><a class="bookmark-button-float-lunagao btn btn-warning" onclick="deletebookmarkByUrl(entity_lunagao)">取消收藏</a>');
+        }
+    }, ErrorCB.showError);
+}
+
 function bookmarksSuccessCallBack(body) {
     // console.log(body);
     $('.loading').remove();

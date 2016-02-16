@@ -13,6 +13,12 @@ exports.showBookmarks = function showBookmarks() {
     }
 }
 
+exports.showBookmarksButton = function showBookmarksButton(entity) {
+    if (User.isHasLogin()) {
+        BookmarksLogin.hasBookmark(entity);
+    }
+}
+
 function showNoUserLoginBookmarksView() {
     BookmarksNotLogin.showBookmarksNotLogin();
 }
