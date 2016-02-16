@@ -1,0 +1,45 @@
+.bookmarks-main-lunagao {
+    width: 100%;
+    height: 100%;
+    padding-right: 60px;
+    flex: auto;
+    overflow: auto;
+    overflow-x: unset;
+}
+.bookmarks-main-lunagao .loading {
+    margin-top: 200px;
+}
+.bookmarks-main-lunagao .bookmarks-item {
+    margin: 20px 20px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #BDC3C7;
+}
+.bookmarks-main-lunagao .bookmarks-item span{
+    margin-right: 20px;
+    color: #D35400;
+    font-size: 14px;
+}
+.bookmarks-main-lunagao .bookmarks-item small{
+    color: #95A5A6;
+}
+.bookmarks-main-lunagao .bookmarks-item blockquote {
+    margin-bottom: 0;
+}
+.bookmarks-main-lunagao .bookmarks-item a {
+    float: right;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.bookmarks-main-lunagao .nodata-lunagao {
+    text-align: center;
+}
+.bookmark-modify-alert-lunagao a {
+    margin: 10px;
+}
+.bookmark-tag-modity-lunagao input {
+    width: 100%;
+}
+.bookmark-summary-modity-lunagao textarea {
+    width: 100%;
+    resize: none;
+}

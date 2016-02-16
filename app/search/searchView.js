@@ -116,7 +116,6 @@ function showSearchResultList(json) {
         // htmlstr += '<div class="result-votetime">' + json[variable].VoteTimes + '</div>';
         // htmlstr += '<div class="result-viewtimes">' + json[variable].ViewTimes + '</div>';
         htmlstr += '<div class="result-commenttimes"><small><i class="fui-new">(' + json[variable].CommentTimes + ')</i></small></div>';
-        // htmlstr += '<div class="result-id">' + json[variable].Id + '</div>';
         htmlstr += '</br>'
         htmlstr += '</div>';
     }

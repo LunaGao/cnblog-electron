@@ -154,7 +154,11 @@ function getLoginViewHtml(isView) {
     } else {
         htmlstr += 'login();'
     }
-    htmlstr += '">登录</a><br><small>如果您 "忘记密码" 或 "没有账号"，请访问www.cnblogs.com进行操作。</small></div></div>'
+    htmlstr += '">登录</a>';
+    if (isView) {
+        htmlstr += '<a class="btn btn-block btn-lg btn-danger" href="#" onclick="closeLoginView()">取消</a>';
+    }
+    htmlstr += '<br><small>如果您 "忘记密码" 或 "没有账号"，请访问www.cnblogs.com进行操作。</small></div></div>'
     return htmlstr;
 }
 
