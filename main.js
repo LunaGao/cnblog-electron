@@ -37,7 +37,7 @@ app.on('ready', function() {
   mainWindow.loadURL('file://' + __dirname + '/app/index.html');
 
   // 打开开发工具
-  mainWindow.openDevTools();
+//   mainWindow.openDevTools();
 
   // 当 window 被关闭，这个事件会被发出
   mainWindow.on('closed', function() {
@@ -45,5 +45,6 @@ app.on('ready', function() {
     // 通常会把多个 window 对象存放在一个数组里面，
     // 但这次不是。
     mainWindow = null;
+    app.quit();
   });
 });

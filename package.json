@@ -1,6 +1,6 @@
 {
   "name": "cnblogs",
-  "version": "0.1.0-Base",
+  "version": "0.2.0",
   "description": "cnblogs",
   "main": "main.js",
   "dependencies": {
@@ -23,7 +23,11 @@
   },
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager ./ cnblogs --platform=darwin --arch=x64 --out ~/Desktop/cnblogs --version 0.36.3 --overwrite --icon=./app/img/app-icon.icns --asar=true"
+    "package-mac": "electron-packager ./ cnblogs --platform=darwin --arch=x64 --out ~/Desktop/cnblogs --version 0.36.7 --overwrite --icon=./app/img/app-icon.icns --asar=true",
+    "package-linux64": "electron-packager ./ cnblogs --platform=linux --arch=x64 --out ~/Desktop/cnblogs --version 0.36.7 --overwrite --asar=true",
+    "package-linux32": "electron-packager ./ cnblogs --platform=linux --arch=ia32 --out ~/Desktop/cnblogs --version 0.36.7 --overwrite --asar=true",
+    "package-win64": "electron-packager ./ cnblogs --platform=win32 --arch=x64 --out ~/Desktop/cnblogs --version 0.36.7 --overwrite --icon=./app/img/app-icon.ico --asar=true --ignore=cnblogs.app",
+    "package-win32": "electron-packager ./ cnblogs --platform=win32 --arch=ia32 --out ~/Desktop/cnblogs --version 0.36.7 --overwrite --icon=./app/img/app-icon.ico --asar=true --ignore=cnblogs.app"
   },
   "keywords": [
     "Cnblogs"

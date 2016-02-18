@@ -4,8 +4,9 @@
 var http = require('http');
 var encoding = require('encoding');
 var qs = require('querystring');
-var fs = require('fs');
+// var fs = require('fs');
 var user = require('./user');
+var information = require('./getInformation');
 
 var __ACCESS_TOKEN;
 var __IS_USER_TOKEN = false;
@@ -28,7 +29,7 @@ exports.getToken = function getToken(refush, callbackSuccess, callBackError) {
         grant_type: 'client_credentials'
         };
     var content = qs.stringify(post_data);
-    var authKey = fs.readFileSync('./app/authKey.file', 'utf-8');
+    var authKey = information.getAuthKey();
     var options = {
         hostname: 'api.cnblogs.com',
         port: 80,
@@ -66,8 +67,10 @@ exports.getTokenByUser = function getTokenByUser(userName, passWord, callbackSuc
         callbackSuccess(__ACCESS_TOKEN);
         return;
     }
-    var authKey = fs.readFileSync('./app/authKey.file', 'utf-8');
-    var pubkey = fs.readFileSync('./app/publickey.pub', 'utf-8');
+    // var authKey = fs.readFileSync('file://' + __dirname + '/app/authKey.file', 'utf-8');
+    // var pubkey = fs.readFileSync('./app/publickey.pub', 'utf-8');
+    var authKey = information.getAuthKey();
+    var pubkey = information.getPublickey();
     var encrypt = new JSEncrypt();
     encrypt.setPublicKey(pubkey);
     var usernameResult = encrypt.encrypt(userName);

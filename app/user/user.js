@@ -4,12 +4,23 @@ var LocalStorage = require('node-localstorage').LocalStorage;
 var UserWebApi = require('./userWebApi');
 var blogWebApi = require('./blogsWebApi');
 var token = require('./oauthWebApi');
-var UserBlogs = require('./UserBlogs');
+var UserBlogs = require('./userBlogs');
 var ErrorCB = require('./errorCB');
+var information = require('./getInformation');
 var fs = require('fs');
 
 exports.showUserInfo = function showUserInfo() {
-    localStorage = new LocalStorage('./localStorage');
+    // localStorage = new LocalStorage('./localStorage');
+    var filepath = __dirname;
+    var length = filepath.lastIndexOf('/');
+    filepath = filepath.substring(0, length);
+    length = filepath.lastIndexOf('/');
+    filepath = filepath.substring(0, length);
+    length = filepath.lastIndexOf('/');
+    filepath = filepath.substring(0, length);
+    fs.mkdir(filepath + '/localStorage', function (err) {
+    });
+    localStorage = new LocalStorage(filepath + '/localStorage');
     if (this.isHasLogin()) {
         showUserInfoView();
         showUserBlogsInformation();
@@ -143,7 +154,7 @@ function loginError(errorData) {
 }
 
 function getLoginViewHtml(isView) {
-    var accountstr = fs.readFileSync('./app/debugAccount.file', 'utf-8');
+    var accountstr = information.getAccount();
     var accountJson = JSON.parse(accountstr);
     var htmlstr = '<div class="login-screen"><div class="login-form"><div class="form-group"><input type="text" class="form-control login-field" value="';
     htmlstr += accountJson.username;
