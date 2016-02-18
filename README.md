@@ -18,11 +18,11 @@
 执行  babel --presets react slide blogs webapi kbArticles news user statuses search common bookmarks --out-dir build
 ## 3 打包安装文件
 切换到项目根目录下
-Mac版本执行  npm run-script package-mac
-linux64版本执行  npm run-script package-linux64
-linux32版本执行  npm run-script package-linux32
-win64版本执行  npm run-script package-win64
-win32版本执行  npm run-script package-win32
+- Mac版本执行  npm run-script package-mac
+- linux64版本执行  npm run-script package-linux64
+- linux32版本执行  npm run-script package-linux32
+- win64版本执行  npm run-script package-win64
+- win32版本执行  npm run-script package-win32
 
 # 开发过程中的项目实时编译
 切换到app目录下
