@@ -11,23 +11,25 @@
 
 # 编译方法
 ## 1 安装node_modules下的第三方组件
-切换到项目根目录下
-执行  npm install
+切换到项目根目录下执行
+> $ npm install
+
 ## 2 编译build下js文件
-切换到app目录下
-执行  babel --presets react slide blogs webapi kbArticles news user statuses search common bookmarks --out-dir build
+切换到app目录下执行
+> $ babel --presets react slide blogs webapi kbArticles news user statuses search common bookmarks --out-dir build
+
 ## 3 打包安装文件
 切换到项目根目录下
-- Mac版本执行  npm run-script package-mac
-- linux64版本执行  npm run-script package-linux64
-- linux32版本执行  npm run-script package-linux32
-- win64版本执行  npm run-script package-win64
-- win32版本执行  npm run-script package-win32
+> - Mac版本执行 $ npm run-script package-mac
+> - linux64版本执行 $ npm run-script package-linux64
+> - linux32版本执行 $ npm run-script package-linux32
+> - win64版本执行 $ npm run-script package-win64
+> - win32版本执行 $ npm run-script package-win32
 
 # 开发过程中的项目实时编译
-切换到app目录下
-执行  babel --presets react slide blogs webapi kbArticles news user statuses search common bookmarks --watch --out-dir build
+切换到app目录下执行 
+> $ babel --presets react slide blogs webapi kbArticles news user statuses search common bookmarks --watch --out-dir build
 
 # 引入第三方
-- （数据存储） https://github.com/lmaccherone/node-localstorage
-- （ssh中的rsa加密） https://github.com/travist/jsencrypt
+- _（数据存储） https://github.com/lmaccherone/node-localstorage_
+- _（ssh中的rsa加密） https://github.com/travist/jsencrypt_
