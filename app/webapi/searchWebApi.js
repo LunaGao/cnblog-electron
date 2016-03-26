@@ -9,7 +9,7 @@ exports.getSearch = function getSearch(category, keyWords, pageIndex, viewTimesA
   token.getToken(false, function(access_token) {
     var options = {
         url: 'http://api.cnblogs.com/api/ZzkDocuments/' + category + 
-            '?keyWords=' + encodeURI(keyWords) + 
+            '?keyWords=' + encodeURIComponent(keyWords) +
             '&pageIndex=' + pageIndex + 
             '&viewTimesAtLeast=' + viewTimesAtLeast,
         headers: {
