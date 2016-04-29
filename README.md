@@ -1,4 +1,6 @@
 # 博客园-Mac 客户端 
+![Bless](https://cdn.rawgit.com/LunaGao/BlessYourCodeTag/master/tags/jesus.svg)
+
 博客园客户端，使用electron。
 
 # 说明
